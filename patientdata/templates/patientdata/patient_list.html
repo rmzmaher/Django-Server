@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients List</title>
+</head>
+<body>
+    <h1>Patients List</h1>
+    <ul>
+        {% for patient in patients %}
+            <li><a href="{% url 'patient-detail' patient.pk %}">{{ patient.name }}</a></li>
+        {% empty %}
+            <li>No patients available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

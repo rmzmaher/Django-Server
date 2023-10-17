@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Data List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Test Data List</h1>
+        <table class="table table-bordered mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Patient</th>
+                    <th>Phone Number</th>
+                    <th>Unit</th>
+                    <th>Shift</th>
+                    <th>Visfatin Number</th>
+                    <th>MDA Number</th>
+                    <th>FMD Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in test_data %}
+                    <tr>
+                        <td><a href="{% url 'patient-detail' data.patient_info.pk %}">{{ data.patient_info.name }}</a></td>
+                        <td>{{ data.patient_info.phone_number }}</td>
+                        <td>{{ data.unit }}</td>
+                        <td>{{ data.shift }}</td>
+                        <td>{{ data.visfatin_number }}</td>
+                        <td>{{ data.MDA_number }}</td>
+                        <td>{{ data.FMD_number }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="7">No test data available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'admin:patientdata_testdata_add' %}"><button class="btn btn-primary">Add New Test</button></a>
+        <button class="btn btn-primary" id="exportExcel">Export to Excel</button>
+        <a href="{% url 'admin:patientdata_patient_add' %}"><button class="btn btn-primary">Add New Patient</button></a>
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('exportExcel').addEventListener('click', function () {
+                window.location.href = "{% url 'generate-excel' %}";
+            });
+        });
+        
+    </script>
+</body>
+</html>
