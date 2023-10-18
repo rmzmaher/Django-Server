@@ -27,9 +27,23 @@ import openpyxl
 from django.contrib.admin.views import login as admin_login
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
-def custom_admin_login(request, extra_context=None):
-    return admin_login(request, extra_context)
+from django.contrib.admin.sites import AdminSite
+from django.views.decorators.csrf import csrf_exempt
+
+class CustomAdminSite(AdminSite):
+    login_template = 'admin/login.html'  # Specify your custom login template if needed
+
+    @csrf_exempt
+    def login(self, request, extra_context=None):
+        return super(CustomAdminSite, self).login(request, extra_context)
+
+from django.contrib import admin
+
+class CustomAdminSite(admin.AdminSite):
+    login_template = 'admin/login.html'  # Specify your custom login template if needed
+
+custom_admin_site = CustomAdminSite(name='customadmin')
+
 
 def generate_excel(request):
     # Your data to be included in the Excel file
