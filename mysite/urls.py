@@ -18,9 +18,9 @@ from django.urls import path, include
 from patientdata import views
 
 urlpatterns = [
-    path('admin/', views.custom_admin_site.urls),
+    path('admin/', admin.site.urls),
     path('', include('patientdata.urls')),
     path('', views.TestDataListView.as_view(), name='test-data-list'),
     path('', views.TestDataListView.as_view(), name='home'),
-
+    path('admin/login/', views.custom_admin_site.login)
 ]

@@ -24,6 +24,8 @@ class TestDataListView(ListView):
 from django.http import HttpResponse
 import openpyxl
 
+from django.views.decorators.csrf import csrf_exempt
+
 from django.contrib.admin.sites import AdminSite
 from django.views.decorators.csrf import csrf_exempt
 
@@ -34,10 +36,6 @@ class CustomAdminSite(AdminSite):
     def login(self, request, extra_context=None):
         return super(CustomAdminSite, self).login(request, extra_context)
 
-from django.contrib import admin
-
-class CustomAdminSite(admin.AdminSite):
-    login_template = 'admin/login.html'  # Specify your custom login template if needed
 
 custom_admin_site = CustomAdminSite(name='customadmin')
 
