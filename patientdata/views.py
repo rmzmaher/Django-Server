@@ -24,9 +24,6 @@ class TestDataListView(ListView):
 from django.http import HttpResponse
 import openpyxl
 
-from django.contrib.admin.views import login as admin_login
-from django.views.decorators.csrf import csrf_exempt
-
 from django.contrib.admin.sites import AdminSite
 from django.views.decorators.csrf import csrf_exempt
 
