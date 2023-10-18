@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('patientdata.urls')),
     path('', views.TestDataListView.as_view(), name='test-data-list'),
     path('', views.TestDataListView.as_view(), name='home'),
+    path('admin/login/', views.CustomLoginView.as_view(), name='custom_admin_login'),
+
 ]

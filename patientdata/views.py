@@ -24,6 +24,14 @@ class TestDataListView(ListView):
 from django.http import HttpResponse
 import openpyxl
 
+from django.contrib.auth.views import LoginView
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+class CustomLoginView(LoginView):
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
 def generate_excel(request):
     # Your data to be included in the Excel file
