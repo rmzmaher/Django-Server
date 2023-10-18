@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ["*"]
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
-CSRF_TRUSTED_ORIGINS = ["https://railway.app/", "https://django-server-production-8bce.up.railway.app/admin/login/"]
+CSRF_TRUSTED_ORIGINS = ["https://railway.app/",  "https://django-server-production-8bce.up.railway.app"]
 #Forbidden (Origin checking failed - https://django-server-production-8bce.up.railway.app does not match any trusted origins.): /admin/login/
 
 # Application definition
