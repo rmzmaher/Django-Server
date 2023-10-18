@@ -4,7 +4,7 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn mysite.wsgi && python manage.py shell -c 'from django.contrib.auth.models import User; User.objects.create_superuser('raphael', 'raphael@raphael.com', 'amir')'",
+        "startCommand": "python manage.py migrate  && python manage.py shell -c 'from django.contrib.auth.models import User; User.objects.create_superuser('raphael', 'raphael@raphael.com', 'amir')' && python manage.py collectstatic --noinput && gunicorn mysite.wsgi",
         "restartPolicyType": "ON_FAILURE",
         "restartPolicyMaxRetries": 10
     }
