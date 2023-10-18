@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ["*"]
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
-CSRF_TRUSTED_ORIGINS = ["https://railway.app/project", "https://django-server-production-8bce.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = ["https://django-server-production-8bce.up.railway.app/", "https://django-server-production-8bce.up.railway.app/"]
 
 # Application definition
 
